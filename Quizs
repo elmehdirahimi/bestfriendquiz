@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "602715ba06b1efb00b8c947f"
+  },
+  "title_q": "What is your idea of a perfect date?",
+  "chooses": [
+    {
+      "title_q": "Picnic",
+      "image_q": "/img/Picnic.jpg"
+    },
+    {
+      "title_q": "Watch a movie",
+      "image_q": "/img/Watch_a_movie.jpg"
+    },
+    {
+      "title_q": "Try adventurous sports",
+      "image_q": "/img/Try_adventurous_sports.jpg"
+    },
+    {
+      "title_q": "Try adventurous sports",
+      "image_q": "/img/Try_adventurous_sports.jpg"
+    },
+    {
+      "title_q": "Try adventurous sports",
+      "image_q": "/img/Try_adventurous_sports.jpg"
+    }
+  ],
+  "trueChoose": 1,
+  "_class": "com.ensak.model.Quizs"
+}]
