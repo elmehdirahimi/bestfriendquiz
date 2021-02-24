@@ -104,6 +104,9 @@
                             <target>
                                 <copy todir="${project.build.directory}/classes/public">
                                     <fileset dir="${project.basedir}/frontend/build"/>
+								</copy>
+								<copy todir="${project.build.directory}/classes/templates">
+                                    <fileset dir="${project.basedir}/frontend/build"/>
                                 </copy>
                             </target>
                         </configuration>
