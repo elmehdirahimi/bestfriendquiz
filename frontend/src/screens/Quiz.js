@@ -1,25 +1,21 @@
 import React, { useCallback, useEffect, useState } from "react";
 import StepWizard from "react-step-wizard";
-import Choose from "../components/Choose";
+import Choose1 from "../components/Choose1";
+import Choose2 from "../components/Choose2";
+import Choose3 from "../components/Choose3";
 import AllQuizService from "../services/AllQuizService";
 import QuizsServices from "../services/QuizsServices";
 import Last from "./Last";
 
 function Quiz(props) {
-
-
-  // const {data} = mydata;
-  // const quizs = data.find(quiz => quiz._id == quizId).quizs;
   const [quizs, setquizs] = useState([]);
   const [newId, setnewID] = useState("");
-  const [newQuizs, setnewQuizs] = useState([])
+  const [newQuizs, setnewQuizs] = useState([]);
 
   const fetchData = useCallback(() => {
-
-    AllQuizService.getAllQuizById( props.match.params.id).then((response) => {
+    AllQuizService.getAllQuizById(props.match.params.id).then((response) => {
       setquizs(response.data.allQuiz.quizs);
-      setnewQuizs({...response.data.allQuiz});
-      // console.log(response.data.allQuiz.quizs);
+      setnewQuizs({ ...response.data.allQuiz });
     });
   }, []);
 
@@ -27,13 +23,8 @@ function Quiz(props) {
     fetchData();
   }, [fetchData]);
 
-  
-
-
   const updateForm = (key, value) => {
-    // console.log(newQuizs);
     newQuizs.quizs[key - 1].trueChoose = value;
-    // console.log(key + " " + value);
   };
 
   const sendQuiz = () => {
@@ -41,26 +32,23 @@ function Quiz(props) {
     newQuizs.type = "test";
     AllQuizService.createAllQuiz(newQuizs).then((response) => {
       setnewID(response.data.savedAllQuiz);
-
-      // alert("DSsd");
-    });;
-
-    // console.log(newId);
+    });
   };
 
   return (
-    
-    <div className="col-lg-12">
+    <div className="">
       <StepWizard>
-        {/* <First update={updateForm} /> */}
-        {quizs && quizs.map((quiz)=> (
-
-          <Choose sendQuiz={sendQuiz} update={updateForm} myquiz={quiz} />
-        ))}
-         {quizs && quizs.length > 0 && (
- <Last newId={newId}/>
-         )}
-       
+        {quizs &&
+          quizs.map((quiz) =>
+            quiz.type == 1 ? (
+              <Choose1 sendQuiz={sendQuiz} update={updateForm} myquiz={quiz} />
+            ) : quiz.type == 2 ? (
+              <Choose2 sendQuiz={sendQuiz} update={updateForm} myquiz={quiz} />
+            ) : (
+              <Choose3 sendQuiz={sendQuiz} update={updateForm} myquiz={quiz} />
+            )
+          )}
+        {quizs && quizs.length > 0 && <Last newId={newId} />}
       </StepWizard>
     </div>
   );

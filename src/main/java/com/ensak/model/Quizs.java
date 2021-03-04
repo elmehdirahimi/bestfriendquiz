@@ -13,16 +13,18 @@ public class Quizs {
 	private String title_q;
 	private List<Chooses> chooses;
 	private int trueChoose;
+	private int type;
 	
-	public Quizs(String id, String title_q, List<Chooses> chooses, int trueChoose) {
+	
+	
+	public Quizs(String id, String title_q, List<Chooses> chooses, int trueChoose, int type) {
 		super();
 		this.id = id;
 		this.title_q = title_q;
 		this.chooses = chooses;
 		this.trueChoose = trueChoose;
+		this.type = type;
 	}
-	
-	
 	public String getId() {
 		return id;
 	}
@@ -47,9 +49,19 @@ public class Quizs {
 	public void setTrueChoose(int trueChoose) {
 		this.trueChoose = trueChoose;
 	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
 	@Override
 	public String toString() {
-		return "Quizs [id=" + id + ", title_q=" + title_q + ", chooses=" + chooses + ", trueChoose=" + trueChoose + "]";
+		return "Quizs [id=" + id + ", title_q=" + title_q + ", chooses=" + chooses + ", trueChoose=" + trueChoose
+				+ ", type=" + type + "]";
 	}
+	
+
+	
 	
 }

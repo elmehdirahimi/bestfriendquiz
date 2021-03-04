@@ -11,6 +11,8 @@ export default function AdminChoose(props) {
   const [title_q, settitle_q] = useState("");
   const [path, setpath] = useState("");
   const [allQuizs, setallQuizs] = useState({});
+  const [type, settype] = useState(1);
+
   const fetchData = useCallback(() => {
     AllQuizService.getAllQuizById(props.qid).then((response) => {
       setallQuizs(response.data.allQuiz);
@@ -24,7 +26,7 @@ export default function AdminChoose(props) {
   const addQuiz = (e) => {
     e.preventDefault();
     if (!allQuizs.quizs) allQuizs.quizs = [];
-    allQuizs.quizs.push({ title_q: title_q, chooses: [], trueChoose: -1 });
+    allQuizs.quizs.push({ title_q: title_q, chooses: [], trueChoose: -1 , type : type});
     AllQuizService.updateAllQuiz(allQuizs);
     props.update();
     props.nextStep();
@@ -182,6 +184,20 @@ props.previousStep();
             </div>
             <div className="ibox-content">
               <form onSubmit={addQuiz}>
+                   {/* sdadada */}
+                   <div className="form-group row">
+                  <label className="col-lg-2 col-form-label">type</label>
+                  <div className="col-lg-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      onChange={(e) => {
+                        settype(e.target.value);
+                      }}
+                    />
+                  </div>
+                </div>
+
                 <div className="form-group row">
                   <label className="col-lg-2 col-form-label">Titre</label>
                   <div className="col-lg-10">
